@@ -196,7 +196,7 @@ def split(path, size, file_, dirpath, split_size, start_time=0, i=1, inLoop=Fals
         base_name, extension = ospath.splitext(file_)
         split_size = split_size - 2500000
         while i <= parts :
-            parted_name = "{}.part{}{}".format(str(base_name), str(i).zfill(3), str(extension))
+            parted_name = "{}-{}{}".format(str(base_name), str(i).zfill(2), str(extension))
             out_path = ospath.join(dirpath, parted_name)
             srun(["ffmpeg", "-hide_banner", "-loglevel", "error", "-i",
                             path, "-ss", str(start_time), "-fs", str(split_size),
